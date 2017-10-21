@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Kata20171021_ReverseOrRotate
 {
     [TestClass]
-    public class UnitTest1
+    public class ReverseOrRotateTests
     {
         [TestMethod]
         public void TestMethod1()
