@@ -16,14 +16,6 @@ namespace Kata20171021_ReverseOrRotate
         }
 
         [TestMethod]
-        public void input_12_string_and_2_sz()
-        {
-            var revrot = new Revrot();
-            var result = revrot.RevRot("12", 2);
-            Assert.AreEqual("21", result);
-        }
-
-        [TestMethod]
         public void input_12_string_and_0_sz()
         {
             var revrot = new Revrot();
@@ -38,6 +30,22 @@ namespace Kata20171021_ReverseOrRotate
             var result = revrot.RevRot("12", 3);
             Assert.AreEqual("", result);
         }
+
+        [TestMethod]
+        public void input_123_string_and_3_sz()
+        {
+            var revrot = new Revrot();
+            var result = revrot.RevRot("123", 3);
+            Assert.AreEqual("321", result);
+        }
+
+        [TestMethod]
+        public void input_124_string_and_3_sz()
+        {
+            var revrot = new Revrot();
+            var result = revrot.RevRot("124", 3);
+            Assert.AreEqual("241", result);
+        }
     }
 
     public class Revrot
@@ -48,7 +56,10 @@ namespace Kata20171021_ReverseOrRotate
             {
                 return "";
             }
-            return string.Concat(strng.Reverse());
+            
+            var intArray = strng.Select(Convert.ToInt32);
+            var isDivBy2 = intArray.Sum(i => Math.Pow(i, 3)) % 2 == 0;
+            return isDivBy2 ? string.Concat(strng.Reverse()) : $"{strng.Substring(1)}{strng[0]}";
         }
     }
 }
