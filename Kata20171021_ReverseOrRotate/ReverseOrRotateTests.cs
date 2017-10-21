@@ -30,13 +30,21 @@ namespace Kata20171021_ReverseOrRotate
             var result = revrot.RevRot("12", 0);
             Assert.AreEqual("", result);
         }
+
+        [TestMethod]
+        public void input_12_string_and_3_sz()
+        {
+            var revrot = new Revrot();
+            var result = revrot.RevRot("12", 3);
+            Assert.AreEqual("", result);
+        }
     }
 
     public class Revrot
     {
         public string RevRot(string strng, int sz)
         {
-            if (strng == "" || sz == 0)
+            if (strng == "" || sz == 0 || strng.Length < sz)
             {
                 return "";
             }
