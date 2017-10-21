@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -46,6 +47,14 @@ namespace Kata20171021_ReverseOrRotate
             var result = revrot.RevRot("124", 3);
             Assert.AreEqual("241", result);
         }
+
+        [TestMethod]
+        public void input_1241_string_and_3_sz()
+        {
+            var revrot = new Revrot();
+            var result = revrot.RevRot("1241", 3);
+            Assert.AreEqual("2411", result);
+        }
     }
 
     public class Revrot
@@ -56,10 +65,20 @@ namespace Kata20171021_ReverseOrRotate
             {
                 return "";
             }
-            
-            var intArray = strng.Select(Convert.ToInt32);
-            var isDivBy2 = intArray.Sum(i => Math.Pow(i, 3)) % 2 == 0;
-            return isDivBy2 ? string.Concat(strng.Reverse()) : $"{strng.Substring(1)}{strng[0]}";
+            var subFreq = strng.Length / sz + 1;
+            var result = new List<string>();
+            for (var i = 0; i < subFreq; i++)
+            {
+                var subStr = string.Concat(strng.Skip(i * sz).Take(sz));
+                var sumOfCubesIsDivBy2 = subStr.Sum(a => Math.Pow(Convert.ToInt32(a), 3)) % 2 == 0;
+                var newSubStr = sumOfCubesIsDivBy2
+                    ? string.Concat(subStr.Reverse())
+                    : $"{subStr.Substring(1)}{subStr[0]}";
+                result.Add(newSubStr);
+            }
+
+            return string.Concat(result);
         }
     }
 }
+
