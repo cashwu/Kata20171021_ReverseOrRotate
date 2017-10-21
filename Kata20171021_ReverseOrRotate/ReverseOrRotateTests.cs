@@ -53,7 +53,7 @@ namespace Kata20171021_ReverseOrRotate
         {
             var revrot = new Revrot();
             var result = revrot.RevRot("1241", 3);
-            Assert.AreEqual("2411", result);
+            Assert.AreEqual("241", result);
         }
     }
 
@@ -65,7 +65,7 @@ namespace Kata20171021_ReverseOrRotate
             {
                 return "";
             }
-            var subFreq = strng.Length / sz + 1;
+            var subFreq = strng.Length / sz;
             var result = new List<string>();
             for (var i = 0; i < subFreq; i++)
             {
