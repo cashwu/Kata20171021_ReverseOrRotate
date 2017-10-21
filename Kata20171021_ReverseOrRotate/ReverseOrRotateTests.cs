@@ -55,6 +55,14 @@ namespace Kata20171021_ReverseOrRotate
             var result = revrot.RevRot("1241", 3);
             Assert.AreEqual("241", result);
         }
+
+        [TestMethod]
+        public void input_733049910872815764_string_and_5_sz()
+        {
+            var revrot = new Revrot();
+            var result = revrot.RevRot("733049910872815764", 5);
+            Assert.AreEqual("330479108928157", result);
+        }
     }
 
     public class Revrot
